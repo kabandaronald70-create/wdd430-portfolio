@@ -27,7 +27,15 @@ export default function Home() {
           of my recent projects.
         </p>
       </section>
-      <ProjectList projects={projects} />
+      <section aria-labelledby="projects-heading">
+        <h2
+          id="projects-heading"
+          className="text-2xl font-bold mb-4 text-gray-900"
+        >
+          Featured Projects
+        </h2>
+        <ProjectList projects={projects} />
+      </section>
     </div>
   );
 }

@@ -24,7 +24,8 @@ export default function ProjectCard({
             href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-blue-600 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            aria-label={`View ${title} project`}
           >
             View Project
           </a>
