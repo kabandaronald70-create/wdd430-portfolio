@@ -8,6 +8,9 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    "https://wdd430-portfolio-1zzljlri4-kabanda.vercel.app",
+  ),
   title: {
     default: "Ronald Kabanda | Developer Portfolio",
     template: "%s | Ronald Kabanda",
