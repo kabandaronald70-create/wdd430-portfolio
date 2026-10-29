@@ -2,6 +2,10 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+
+// Load the font and assign it to a variable
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
@@ -26,7 +30,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen bg-gray-100">
+      {/* Add the font class to the body */}
+      <body
+        className={`${inter.className} flex flex-col min-h-screen bg-gray-100`}
+      >
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
