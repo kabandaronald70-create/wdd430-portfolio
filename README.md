@@ -2,7 +2,6 @@
 
 **Live Site:** https://wdd430-portfolio-1zzljlri4-kabanda.vercel.app/
 
-(The rest of the default Next.js README text can stay below)
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
