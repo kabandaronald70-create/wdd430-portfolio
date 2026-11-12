@@ -1,8 +1,11 @@
 import { getProjects } from "@/lib/projects-db";
+
 export const instant = false;
-export const dynamic = "force-dynamic";
 
 export default async function OpenSourcePage() {
+  // TEMPORARY DELAY: Remove this after testing!
+  await new Promise((res) => setTimeout(res, 2000));
+
   const projects = await getProjects("opensource");
 
   return (
