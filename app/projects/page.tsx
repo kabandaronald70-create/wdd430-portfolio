@@ -1,8 +1,10 @@
 import { getProjects } from "@/lib/projects-db";
-export const instant = false;
+
+// This line forces Next.js to render the page dynamically on every request
+export const dynamic = "force-dynamic";
 
 export default async function ProjectsPage() {
-  // Import directly from the database module!
+  // This fetches the latest data from your Postgres database every time
   const projects = await getProjects();
 
   return (

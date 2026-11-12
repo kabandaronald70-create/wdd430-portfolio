@@ -1,5 +1,6 @@
 import { getProjects } from "@/lib/projects-db";
 export const instant = false;
+export const dynamic = "force-dynamic";
 
 export default async function OpenSourcePage() {
   const projects = await getProjects("opensource");
