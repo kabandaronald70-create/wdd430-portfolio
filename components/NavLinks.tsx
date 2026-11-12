@@ -10,14 +10,14 @@ export default function NavLinks() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <ul className="flex gap-6">
+    <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold text-white sm:text-base">
       <li>
         <Link
           href="/"
           className={
             isActive("/")
-              ? "text-yellow-300 font-bold underline"
-              : "hover:underline"
+              ? "font-bold text-yellow-300 underline decoration-2 underline-offset-4"
+              : "transition-colors hover:text-blue-100"
           }
           aria-current={isActive("/") ? "page" : undefined}
         >
@@ -29,8 +29,8 @@ export default function NavLinks() {
           href="/about"
           className={
             isActive("/about")
-              ? "text-yellow-300 font-bold underline"
-              : "hover:underline"
+              ? "font-bold text-yellow-300 underline decoration-2 underline-offset-4"
+              : "transition-colors hover:text-blue-100"
           }
           aria-current={isActive("/about") ? "page" : undefined}
         >
@@ -42,8 +42,8 @@ export default function NavLinks() {
           href="/projects"
           className={
             isActive("/projects") || pathname.startsWith("/projects/")
-              ? "text-yellow-300 font-bold underline"
-              : "hover:underline"
+              ? "font-bold text-yellow-300 underline decoration-2 underline-offset-4"
+              : "transition-colors hover:text-blue-100"
           }
           aria-current={isActive("/projects") ? "page" : undefined}
         >
@@ -55,8 +55,8 @@ export default function NavLinks() {
           href="/contact"
           className={
             isActive("/contact")
-              ? "text-yellow-300 font-bold underline"
-              : "hover:underline"
+              ? "font-bold text-yellow-300 underline decoration-2 underline-offset-4"
+              : "transition-colors hover:text-blue-100"
           }
           aria-current={isActive("/contact") ? "page" : undefined}
         >

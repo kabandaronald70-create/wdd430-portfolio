@@ -33,13 +33,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* Add the font class to the body */}
-      <body
-        className={`${inter.className} flex flex-col min-h-screen bg-gray-100`}
-      >
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+      <body className={`${inter.className} min-h-screen bg-slate-100 text-slate-900`}>
+        <div className="mx-auto my-4 flex min-h-[calc(100vh-2rem)] w-[calc(100%-2rem)] max-w-7xl flex-col rounded-2xl border-2 border-slate-200 bg-white p-4 sm:my-6 sm:min-h-[calc(100vh-3rem)] sm:w-[calc(100%-3rem)] sm:p-8">
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

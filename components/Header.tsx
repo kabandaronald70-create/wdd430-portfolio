@@ -2,17 +2,18 @@ import NavLinks from "./NavLinks";
 
 export default function Header() {
   return (
-    <header className="bg-blue-600 text-white py-4 shadow-md">
-      <div
-        id="header-title"
-        className="text-2xl font-bold max-w-4xl mx-auto px-4 mb-2"
-      >
-        Ronald Kabanda
+    <header className="mb-4 rounded-xl border-2 border-blue-500 bg-blue-600 px-5 py-4 text-white shadow-sm">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div
+          id="header-title"
+          className="text-xl font-bold tracking-tight text-white"
+        >
+          Ronald Kabanda
+        </div>
+        <nav aria-label="Main navigation">
+          <NavLinks />
+        </nav>
       </div>
-      <nav className="max-w-4xl mx-auto px-4 flex justify-between items-center">
-        {/* Replace the old <ul> with the new NavLinks component */}
-        <NavLinks />
-      </nav>
     </header>
   );
 }
