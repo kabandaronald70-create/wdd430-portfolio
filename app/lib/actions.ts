@@ -15,7 +15,6 @@ const ProjectFormSchema = z.object({
   link: z.string().optional(),
 });
 
-// 1. CREATE ACTION
 export async function createProject(formData: FormData) {
   const raw = {
     title: formData.get("title"),
@@ -31,23 +30,25 @@ export async function createProject(formData: FormData) {
   }
 
   const { title, description, technologies, type, link } = parsed.data;
-
-  // Convert the comma-separated string to a Postgres array format string like {"React","Next.js"}
   const techString = `{${technologies
     .split(",")
     .map((t) => `"${t.trim()}"`)
     .join(",")}}`;
 
-  await sql`
-    INSERT INTO projects (title, description, technologies, type, link)
-    VALUES (${title}, ${description}, ${techString}::text[], ${type}, ${link || null})
-  `;
+  try {
+    await sql`
+      INSERT INTO projects (title, description, technologies, type, link)
+      VALUES (${title}, ${description}, ${techString}::text[], ${type}, ${link || null})
+    `;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to create project. Please try again.");
+  }
 
   revalidatePath("/projects");
   redirect("/projects");
 }
 
-// 2. UPDATE ACTION
 export async function updateProject(id: string, formData: FormData) {
   const raw = {
     title: formData.get("title"),
@@ -68,22 +69,28 @@ export async function updateProject(id: string, formData: FormData) {
     .map((t) => `"${t.trim()}"`)
     .join(",")}}`;
 
-  await sql`
-    UPDATE projects 
-    SET title = ${title}, 
-        description = ${description}, 
-        technologies = ${techString}::text[], 
-        type = ${type}, 
-        link = ${link || null}
-    WHERE id = ${id}
-  `;
+  try {
+    await sql`
+      UPDATE projects 
+      SET title = ${title}, description = ${description}, technologies = ${techString}::text[], type = ${type}, link = ${link || null}
+      WHERE id = ${id}
+    `;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to update project. Please try again.");
+  }
 
   revalidatePath("/projects");
   redirect("/projects");
 }
 
-// 3. DELETE ACTION
 export async function deleteProject(id: string) {
-  await sql`DELETE FROM projects WHERE id = ${id}`;
+  try {
+    await sql`DELETE FROM projects WHERE id = ${id}`;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to delete project. Please try again.");
+  }
+
   revalidatePath("/projects");
 }
