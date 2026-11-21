@@ -2,6 +2,7 @@ import { updateProject } from "@/app/lib/actions";
 import { getProjectById } from "@/lib/projects-db";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+export const instant = false;
 
 export default async function EditProjectPage({
   params,
